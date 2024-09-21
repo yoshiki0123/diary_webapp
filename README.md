@@ -56,6 +56,7 @@
        SECRET_KEY = 'your_secret_key'
        ```
 7.  `settings.py` のデータベース設定を MariaDB に変更します:
+   
     以下は MariaDB に接続するためのサンプル設定です。これを settings.py の DATABASES セクションに追加してください。
     ```
     DATABASES = {
@@ -69,22 +70,22 @@
         }
     }
     ```
-8. マイグレーションを適用します:
+9. マイグレーションを適用します:
     ```bash
     python manage.py migrate
     ```
 
-9. 管理者ユーザーを作成します:
+10. 管理者ユーザーを作成します:
     ```bash
     python manage.py createsuperuser
     ```
 
-10. 開発サーバーを起動します:
+11. 開発サーバーを起動します:
     ```bash
     python manage.py runserver
     ```
 
-11. ブラウザで以下のURLにアクセスして動作を確認します:
+12. ブラウザで以下のURLにアクセスして動作を確認します:
     ```
     http://127.0.0.1:8000/
     ```
