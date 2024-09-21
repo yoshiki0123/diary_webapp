@@ -9,11 +9,11 @@
 - MariaDBとの接続
 
 ## 使用環境のセットアップ
-# 前提条件
+### 前提条件
 - Python 3.7+ がインストールされていること。
 - MariaDB がインストールされていること。
-- 仮想環境を推奨します(今回はcondaを使用)
-# インストール手順
+- 仮想環境を推奨します。(今回はcondaを使用)
+### インストール手順
 1. このリポジトリをクローンします:
     ```bash
     git clone https://github.com/yoshiki0123/diary_webapp.git
@@ -37,7 +37,25 @@
     ```bash
     pip install -r requirements.txt
     ```
-6. *settings.py* のデータベース設定を MariaDB に変更します:
+6. `SECRET_KEY` を生成します:
+
+    Djangoの `get_random_secret_key` を使ってランダムな `SECRET_KEY` を生成します。
+
+    1. Djangoシェルを起動します:
+        ```bash
+        python manage.py shell
+        ```
+
+    2. 次のコマンドを実行して、`SECRET_KEY` を生成します:
+        ```python
+        from django.core.management.utils import get_random_secret_key
+        get_random_secret_key()
+        ```
+    3. 生成された`SECRET_KEY` を、setting.pyに設定してください
+       ```
+       SECRET_KEY = 'ここを設定'
+       ```
+7. *settings.py* のデータベース設定を MariaDB に変更します:
     以下は MariaDB に接続するためのサンプル設定です。これを settings.py の DATABASES セクションに追加してください。
     ```
     DATABASES = {
@@ -51,7 +69,27 @@
         }
     }
     ```
-8. 
+8. マイグレーションを適用します:
+    ```bash
+    python manage.py migrate
+    ```
+
+9. 管理者ユーザーを作成します:
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+10. 開発サーバーを起動します:
+    ```bash
+    python manage.py runserver
+    ```
+
+11. ブラウザで以下のURLにアクセスして動作を確認します:
+    ```
+    http://127.0.0.1:8000/
+    ```
+
+---
 
 ## 必要な環境
 - Python 3.7+ がインストールされていること。
