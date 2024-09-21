@@ -51,11 +51,11 @@
         from django.core.management.utils import get_random_secret_key
         get_random_secret_key()
         ```
-    3. 生成された`SECRET_KEY` を、setting.pyに設定してください
+    3. 生成された`SECRET_KEY` を、`settings.py`に設定してください
        ```
-       SECRET_KEY = 'ここを設定'
+       SECRET_KEY = 'your_secret_key'
        ```
-7. *settings.py* のデータベース設定を MariaDB に変更します:
+7. `settings.py` のデータベース設定を MariaDB に変更します:
     以下は MariaDB に接続するためのサンプル設定です。これを settings.py の DATABASES セクションに追加してください。
     ```
     DATABASES = {
