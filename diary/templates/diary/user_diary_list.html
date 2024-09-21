@@ -1,0 +1,32 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}日記一覧{% endblock %}
+
+{% block content %}
+<h1>{{ user.username }}の日記一覧</h1>
+
+<form method="GET" action="{% url 'user_diary_list' %}">
+    <input type="text" name="q" placeholder="タイトルまたは日付で検索" class="form-control mb-3" value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-primary mb-3">検索</button>
+</form>
+
+<form method="POST" action="{% url 'delete_selected_diaries' %}">
+    {% csrf_token %}
+    
+    <ul>
+        {% for diary in diaries %}
+            <li>
+                <input type="checkbox" name="diary_ids" value="{{ diary.id }}">  
+                <a href="{% url 'user_diary_detail' diary.id %}">{{ diary.title }}</a> - {{ diary.created_at|date:"Y-m-d H:i" }}
+            </li>
+        {% empty %}
+            <li>日記がありません</li>
+        {% endfor %}
+    </ul>
+
+    <button type="submit" class="btn btn-danger">チェックした日記を削除</button>
+</form>
+
+<a href="{% url 'user_diary_create' %}" class="btn btn-success mt-3">新しい日記を作成</a>
+
+{% endblock content %}

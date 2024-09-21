@@ -1,0 +1,32 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}ホーム{% endblock %}
+
+{% block content %}
+<h1>{{ user.username }}さんのホーム</h1>
+<h2>最新の日記 5件</h2>
+
+<div class="accordion" id="accordionExample">
+    {% for diary in diaries %}
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+          タイトル:{{ diary.title }} 作成日時:{{ diary.created_at|date:"Y-m-d H:i" }}
+        </button>
+      </h2>
+      <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          {{ diary.content }}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="list-group-item">
+      <p>日記がありません。</p>
+    </div>
+    {% endfor %}
+</div>
+
+<a href="{% url 'user_diary_create' %}" class="btn btn-success mt-3">新しい日記を作成</a>
+
+{% endblock content %}

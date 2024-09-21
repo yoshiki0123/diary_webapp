@@ -1,0 +1,11 @@
+{% extends 'diary/base.html' %}
+
+{% block title %}{{ diary.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ diary.title }}</h1>
+<p>{{ diary.created_at|date:"Y-m-d H:i" }}</p>
+<p>{{ diary.content }}</p>
+
+<a href="{% url 'user_diary_list' %}" class="btn btn-secondary">戻る</a>
+{% endblock content %}

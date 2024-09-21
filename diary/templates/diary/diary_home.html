@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diaryアプリ - ホーム</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Diaryアプリ</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">ログイン</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Diaryアプリへようこそ</h1>
+        <p class="text-center">このアプリでは、あなたの日々の出来事を記録することができます。</p>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2>使い方</h2>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item">ログイン後、日記の作成、編集、削除ができます。</li>
+                    <li class="list-group-item">自分の日記のみが表示され、他のユーザーのデータは見られません。</li>
+                </ul>
+                <div class="d-grid gap-2">
+                    <a href="{% url 'login' %}" class="btn btn-primary btn-lg">ログインページへ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% bootstrap_javascript %}
+</body>
+</html>
