@@ -55,7 +55,7 @@
        ```
        SECRET_KEY = 'your_secret_key'
        ```
-7. `settings.py` のデータベース設定を MariaDB に変更します:
+7.  `settings.py` のデータベース設定を MariaDB に変更します:
     以下は MariaDB に接続するためのサンプル設定です。これを settings.py の DATABASES セクションに追加してください。
     ```
     DATABASES = {
